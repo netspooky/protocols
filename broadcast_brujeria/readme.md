@@ -1005,6 +1005,8 @@ $ sudo python3 srcdirect.py -i yourinterface -s somenumber_between_1_and_15
 
 Do the same with a different number as an argument to `-s` and chat using the multicast node 0.
 
+POC video here: [https://twitter.com/netspooky/status/1515102935595765776](https://twitter.com/netspooky/status/1515102935595765776)
+
 There was some drama with my wireless card which I think I may have messed up through my testing. Certain packets became garbled for some reason, and others were just dropped. This was tested on both Netgear and Linksys routers between three hosts, all connected directly over ethernet.
 
 ## There’s No OUI Without U and I
