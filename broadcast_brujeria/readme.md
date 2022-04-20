@@ -747,7 +747,7 @@ Testing it on the `vmnet` interface showed that Wireshark parsed a smaller test 
 
 ![image](https://user-images.githubusercontent.com/26436276/163653358-43ff7b67-fadb-4783-9191-60d8d7037d60.png)
 
-It’s unclear why this even works, because the eth.src is an invalid IPv6 multicast address anyways.
+It's unclear why this even works, because the eth.src is an invalid IPv6 multicast address anyways and the packet _should_ have been dropped. In the Linux kernel, if the ethertype is less than 0x600, it will be [classified as 802.3](https://elixir.bootlin.com/linux/v5.17/source/include/uapi/linux/if_ether.h#L120) instead of Ethernet II. This logic may have been what the router followed too, correcting the length field to the actual size of the frame.
 
 More testing showed me that certain byte combos can’t be used. I decided to test each byte of both IPv6 and IPv4 to see if there was even one byte of the address that I could use reliably for data. The results were even stranger than I expected...a pattern appeared. There were 5 bytes that each field could be if the other bytes were 0. I immediately thought about creating an encoding scheme based on these patterns to encode data into a multicast address.
 
