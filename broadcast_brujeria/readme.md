@@ -771,7 +771,9 @@ It was back to the drawing board for figuring out where data can be stored and n
 
 The problem now is that we can’t use this field to differentiate streams anymore. The encoding schema will now have to be modified to allow for an address field, similar to the zeroeth reverse shell from before. By keeping the xor key, checksum, and adding this byte, we will now only have 3 bytes to work with. This is plenty of space, but since mysterious router behavior is also a factor, we will need something to help signal when messages begin and end. This will help avoid corrupted or incomplete communications.
 
-To implement this, there could be another bit field, but that would reduce our space even more. The solution I came up with was to create a buffer using control characters to signal things about the data. Our `eth.dst` field will now look like this:
+To implement this, there could be another bit field, but that would reduce our space even more. The solution I came up with was to create a buffer using control characters to signal things about the data. The ASCII STX character (0x02) indicates the beginning of the message, while the ASCII ETX character (0x03) indicates the end. The data is encoded in base64, which ensures that the relevant message payload will be within a certain range of bytes. This means that error checking can be done on the decoded data and help reduce garbled messages. Lastly, the padding is randomized every time, which means patterns are less likely to be noticed with frequency analysis.
+
+Our `eth.dst` field will now look like this:
 
 ![image](https://user-images.githubusercontent.com/26436276/163653387-59fb8852-04a0-4184-9a40-2a187e9810c6.png)
 
