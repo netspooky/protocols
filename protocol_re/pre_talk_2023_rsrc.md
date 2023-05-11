@@ -80,6 +80,7 @@ This page contains links to things mentioned in my Protocol Reverse Engineering 
 - Visualization of a Linux sk_buff structure that holds packet data https://n0.lol/sk_buff.png or `curl -sL n0.lol/sk_buff.ans`
 - remy - DOing Harm - Windows Delivery Optimization protocol RE https://remyhax.xyz/posts/do-harm/
 - remy - DOing More Harm - https://remyhax.xyz/posts/do-more-harm/
+- Pulling MikroTik into the Limelight - Demystifying and Jailbreaking RouterOS https://margin.re/2022/06/pulling-mikrotik-into-the-limelight/
 - https://github.com/jtpereyda/boofuzz
 - Simple script to send raw frames over an interface https://github.com/netspooky/uJunk/blob/main/net/sendframe.py
 - https://openthread.io/platforms/co-processor
